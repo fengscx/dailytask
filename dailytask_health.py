@@ -11,8 +11,10 @@ def login():
     browser.get('http://authserver.nju.edu.cn/authserver/login?'
                 'service=http%3A%2F%2Fehall.nju.edu.cn%2Flogin%3Fservice%3Dhttp%3A%2F%2'
                 'Fehall.nju.edu.cn%2Fywtb-portal%2Fofficial%2Findex.html')
+    # 输入你的学号
     browser.find_element_by_id('username').send_keys('your student number')
     time.sleep(1)
+    # 输入你的统一身份认证的密码
     browser.find_element_by_id('password').send_keys('your password')
     time.sleep(1)
     btn = browser.find_element_by_class_name("auth_login_btn")
