@@ -20,14 +20,15 @@ def bash_appointment():
     browser.get('http://ehallapp.nju.edu.cn/qljfwapp/sys/lwAppointmentBathroom/*default/index.do#/')
     # 不睡一会获取不到内容。。。坑！
     time.sleep(3)
-    element = browser.find_elements_by_class_name("lib-orders");
+    element = browser.find_elements_by_class_name("lib-orders")
     # 不断尝试
     n = 1
     while not element:
         # browser.get('http://ehallapp.nju.edu.cn/qljfwapp/sys/lwAppointmentBathroom/*default/index.do#/')
         time.sleep(3*n)
+        element = browser.find_elements_by_class_name("lib-orders")
         n += 1
-        if n== 10:
+        if not element and n== 10:
             print(" Some Errors ")
             return
 
