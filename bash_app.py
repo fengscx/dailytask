@@ -49,7 +49,7 @@ def bash_appointment():
     # 自动脚本不支持动态时间设置
     time.sleep(5)
     browser.find_element_by_xpath('//*[@id="app"]/div/div[3]/div[23]').click()
-    time.sleep(1)
+    time.sleep(3)
     browser.find_element_by_class_name("mt-btn-primary").click()
     time.sleep(3)
     browser.quit()
