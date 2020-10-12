@@ -1,5 +1,5 @@
 # 预约
-def bash_appointment():
+def bath_appointment():
     # 设置浏览器参数
     options = Options()
     # 无头
@@ -56,4 +56,4 @@ def bash_appointment():
     return
 
 if __name__ == '__main__':
-    bash_appointment()
+    bath_appointment()
