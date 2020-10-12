@@ -21,6 +21,7 @@ def login():
     btn.click()
     time.sleep(1)
     browser.get('http://ehallapp.nju.edu.cn/xgfw/sys/yqfxmrjkdkappnju/apply/getApplyInfoList.do')
+    time.sleep(6)
     text = browser.execute_script('return document.body.innerText')
     rex = re.compile('\w{32}')
     WID = re.search(rex,text).group()
@@ -30,10 +31,12 @@ def login():
                 '&CURR_LOCATION=%E4%B8%AD%E5%9B%BD%E6%B1%9F%E8%8B%8F%E7%9C%81%E5%8D%97%E4%BA%AC%E5%B8%82%E9%B'
                 'C%93%E6%A5%BC%E5%8C%BA%E5%B9%BF%E5%B7%9E%E8%B7%AF14-4&IS_TWZC=1&IS_HAS_JKQK='
                 '1&JRSKMYS=1&JZRJRSKMYS=1 ')
+    time.sleep(5)
     ret = browser.execute_script('return document.body.innerText')
     rex = re.compile('"msg":"(.*?)"')
-    ans = re.findall(rex, ret)[0]
+    ans = re.findall(rex, ret)[0] if re.findall(rex,ret) else None
     # time.sleep(3)
+    # 可以捕获异常或输出日志，但没必要
     if ans != '成功':
 	#logging.basicConfig(level=logging.ERROR,
          #           filename='daily_health.log',
@@ -42,5 +45,7 @@ def login():
             #        )
         print("Something is Wrong -_-")
     browser.quit()
+    return
+
 if __name__ == '__main__':
     login()
