@@ -9,10 +9,12 @@ from hashlib import md5
 
 def getMyCourse():
     browser = webdriver.Chrome(executable_path='./chromedriver.exe')
-    browser.get('https://yjsxk.nju.edu.cn/yjsxkapp/sys/xsxkapp/index_nju.html')
+    browser.get('NJU选课网址')
     time.sleep(1)
+    # 填写你的学号和密码
     browser.find_element_by_id('loginName').send_keys('')
     browser.find_element_by_id('loginPwd').send_keys('')
+    # 使用超级鹰验证码识别
     chaojiying = Chaojiying_Client('', '', '906486')
     src = browser.find_element_by_id('vcodeImg').get_attribute('src')
     r = requests.get(url=src,stream=True)
@@ -26,10 +28,10 @@ def getMyCourse():
     browser.find_element_by_id('courseBtn').click()
     time.sleep(3)
     # test
-    count = 0
+    # count = 0
     while True:
-        if count > 2:
-            break
+        # if count > 2:
+        #    break
         btns = browser.find_elements_by_class_name('zeromodal-btn')
         # print(len(btns))
         # break
